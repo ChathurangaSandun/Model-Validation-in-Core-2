@@ -10,10 +10,10 @@ namespace PureModelValidation.Model
     {
         [Required]
         public int Id { get; set; }
-        [Required]
+        [Required (ErrorMessage = "Email is required")]
         [StringLength(100)]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string Email { get; set; }
-
         [Required]
         public string FirstName { get; set; }
     }

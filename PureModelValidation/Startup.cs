@@ -54,8 +54,11 @@ namespace PureModelValidation
 
     public class CustomBadRequest : ValidationProblemDetails
     {
+
         public CustomBadRequest(ActionContext context)
         {
+
+
             Title = "Invalid arguments to the API";
             Detail = "The inputs supplied to the API are invalid";
             Status = 400;
