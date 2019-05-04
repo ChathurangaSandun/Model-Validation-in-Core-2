@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using PureModelValidation.Model;
 using System;
 using System.Collections.Generic;
@@ -30,30 +29,29 @@ namespace PureModelValidation.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         [ProducesDefaultResponseType]
         public IActionResult Post([FromBody]Customer customer)
         {
             var a = 404;
-            try
-            {
+            var value = 10;
+            var b = 0;
+            var c = 10;
+         
                 switch (a)
                 {
                     case 404:
+                        NotFound();
                         return NotFound();
-                    case 401:
+                case 401:
                         return Unauthorized();
                     case 500:
-                        throw new Exception();
+                        value = c / b;
+                        return Ok(value);
                 }
 
-                return Ok(true);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
-
+                return Ok(new Customer() { Email = "clivekumara@gmail", FirstName="sandun"});
+          
         }
 
         // PUT api/values/5
